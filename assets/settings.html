@@ -6,6 +6,8 @@
     <!-- <link rel="stylesheet" href="css/photon.min.css"> -->
     <link rel="stylesheet" href="css/picnic.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script>require('./js/settings.js')</script>
   </head>
   <body>
     <div class="window">
@@ -53,13 +55,14 @@
 	  </div>
 
 	  <div id="reference" class="card">
+	  <form name="Form" onsubmit="return validateForm()">
 	    <header>
 	      <h3>Reference USFM settings</h3>
 	    </header>
 	    <div class="form-group">
 	      <label>Reference Bible Name</label>
 	      <input id="ref-name" class="form-control" placeholder="Hindi - UDB (BSI)">
-	    </div>	  
+	    </div>
 	    <div class="form-group">
 	      <label>Reference Bible Language Code</label>
 	      <input id="ref-lang-code" class="form-control" placeholder="hi">
@@ -73,17 +76,19 @@
 	      <input id="ref-path" class="form-control" placeholder="/path/to/reference-bible/folder" readonly>
 	    </div>
 	    <footer>
-      	      <button id="ref-import-btn" class="btn btn-primary">Import</button>
+      	<button id="ref-import-btn" type="submit" class="btn btn-primary">Import</button>
 	    </footer>
-	  </div>	  
+	    </form>
+	  </div>
 
 	  <div id="target" class="card">
-	    <form name="Form" onsubmit="return validateForm()">
+	    <form >
 	      <header>
 		<h3>Target Language Settings</h3>
 	      </header>
 
 	      <div class="form-group">
+	  <label>Import Target Text</label>
 		<input id="target-import-path" class="form-control" placeholder="/path/to/import/target/from" readonly>
 		<button id="target-import-btn" class="btn btn-primary">Import Target</button>
 	      </div>
@@ -107,20 +112,6 @@
 	  <footer class="toolbar toolbar-footer">
 	  </footer>
 	</div>
-	<script>require('./js/settings.js')</script>
-	<script type="text/javascript">
-	  function validateForm()
-	  {
-	  var a=document.forms["Form"]["target_lang"].value;
-	  var b=document.forms["Form"]["target_version"].value;
-	  var c=document.forms["Form"]["export"].value;
 
-	  if (a==null || a=="",b==null || b=="",c==null || c=="")
-	  {
-	  alert("Please Fill All Required Field");
-	  return false;
-	  }
-	  }
-	</script>
   </body>
 </html>

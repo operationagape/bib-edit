@@ -40,6 +40,7 @@ function createVerseInputs(verses, chunks, chapter) {
 	    chunkIndex = i+1;
 	    chunkVerseStart = parseInt(chunks[i].firstvs, 10);
 	    chunkVerseEnd = parseInt(chunks[i+1].firstvs, 10) - 1;
+      console.log(chunkVerseStart);
 	    break;
 	}
     }
@@ -58,6 +59,7 @@ function createVerseInputs(verses, chunks, chapter) {
 	    }
 	}
 	var chunk = chunkVerseStart + '-' + chunkVerseEnd;
+
 	divVerse.setAttribute("chunk-group", chunk);
 	divVerse.contentEditable = true;
 	divVerse.style.cssText = 'width:95%;float:right';
