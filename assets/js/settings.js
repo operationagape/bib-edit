@@ -154,17 +154,3 @@ document.getElementById('ref-path').addEventListener('click', function (e) {
 			  });
 });
 
-  function validateForm()
-    {
-    var a=document.forms["Form"]["ref-name"].value;
-    var b=document.forms["Form"]["ref-lang-code"].value;
-    var c=document.forms["Form"]["ref-version"].value;
-    var d=document.forms["Form"]["ref-path"].value;
-
-
-    if (a==null || a=="",b==null || b=="",c==null || c=="",d==null || d=="")
-      {
-      alert("Please Fill All Required Field");
-      return false;
-      }
-    }
