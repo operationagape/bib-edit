@@ -6,8 +6,6 @@
     <!-- <link rel="stylesheet" href="css/photon.min.css"> -->
     <link rel="stylesheet" href="css/picnic.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
-    <script>require('./js/settings.js')</script>
   </head>
   <body>
     <div class="window">
@@ -34,7 +32,7 @@
 	      <section class="content">
 		<div class="form-group">
 		  <label>Name:</label>
-		  <input type="text" name="name" placeholder="Name" required>
+		  <input type="text" name="name" placeholder="Name" >
 		</div>
 		<div class="form-group">
 		  <label>Email:</label>
@@ -55,13 +53,14 @@
 	  </div>
 
 	  <div id="reference" class="card">
-	  <form name="Form" onsubmit="return validateForm()">
+	  <form name="Form" >
 	    <header>
 	      <h3>Reference USFM settings</h3>
 	    </header>
 	    <div class="form-group">
 	      <label>Reference Bible Name</label>
-	      <input id="ref-name" class="form-control" placeholder="Hindi - UDB (BSI)">
+	      <input id="ref-name" class="form-control" placeholder="Hindi - UDB (BSI)" required autofocus>
+	      <span id="span_id"></span>
 	    </div>
 	    <div class="form-group">
 	      <label>Reference Bible Language Code</label>
@@ -112,6 +111,65 @@
 	  <footer class="toolbar toolbar-footer">
 	  </footer>
 	</div>
+	<script>require('./js/settings.js')</script>
+	<script type="text/javascript">
+		var input_target = (document.getElementsById && document.createElement);
 
+		window.onload = function () {
+			console.log('its running!');
+			document.forms[0].onsubmit = function () {
+				return validate()
+			}
+		}
+
+		function validate() {
+			console.log("validate");
+		validForm = true;
+		firstError = null;
+		errorstring = '';
+		var x = document.forms[0].elements;
+		for (var i=0;i<x.length;i++) {
+			if (!x[i].value)
+				writeError(x[i],'This field is required');
+		}
+		if (!input_target)
+			alert(errorstring);
+		if (firstError)
+			firstError.focus();
+		if (validForm)
+			alert('All data is valid!');
+			// document.getElementsById("span_id").innerHTML = "helloooooo"
+		return false;
+	}
+
+	function writeError(obj,message) {
+	validForm = false;
+	if (obj.hasError) return;
+	if (input_target) {
+		obj.className += ' error';
+		obj.onchange = removeError;
+		var sp = document.createElement('span');
+		sp.className = 'error';
+		sp.appendChild(document.createTextNode(message));
+		obj.parentNode.appendChild(sp);
+		obj.hasError = sp;
+	}
+	else {
+		errorstring += obj.name + ': ' + message + '\n';
+		obj.hasError = true;
+	}
+	if (!firstError)
+		firstError = obj;
+	}
+
+	function removeError()
+	{
+		this.className = this.className.substring(0,this.className.lastIndexOf(' '));
+		this.parentNode.removeChild(this.hasError);
+		this.hasError = null;
+		this.onchange = null;
+	}
+
+</script>
   </body>
 </html>
