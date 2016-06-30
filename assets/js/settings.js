@@ -154,19 +154,50 @@ document.getElementById('ref-path').addEventListener('click', function (e) {
 			  });
 });
 
-<<<<<<< HEAD
-  // function validateForm()
-  //   {
-  //   var a=document.forms["Form"]["ref-name"].value;
-  //   var b=document.forms["Form"]["ref-lang-code"].value;
-  //   var c=document.forms["Form"]["ref-version"].value;
-  //   var d=document.forms["Form"]["ref-path"].value;
+function ValidateUsfmSetting(){
+  var w=document.forms["Form"]["bible-name"].value;
+  var x=document.forms["Form"]["lang-code"].value;
+  var y=document.forms["Form"]["bible-version"].value;
+  var z=document.forms["Form"]["ref-path"].value;
+  var isValid = true;
 
-  //   if (a==null || a=="",b==null || b=="",c==null || c=="",d==null || d=="")
-  //     {
-  //     alert("Please Fill All Required Field");
-  //     return false;
-  //     }
-  //   }
-=======
->>>>>>> settings_ui_validate
+  if(w==null || w==""){
+      document.getElementById('message_name').style.display="block";
+      document.getElementById('message_name').style.color="red";
+      document.getElementById('message_name').innerHTML="Bible name must not be blank";
+      isValid =  false;
+
+  }else{
+    document.getElementById('message_name').style.display="none";
+  }
+
+  if(x==null || x==""){
+      document.getElementById('message_lang').style.display="block";
+      document.getElementById('message_lang').style.color="red";
+      document.getElementById('message_lang').innerHTML="Bible language must not be blank";
+      isValid =  false;
+  }
+  else{
+    document.getElementById('message_lang').style.display="none";
+  }
+
+  if(y==null || y==""){
+      document.getElementById('message_version').style.display="block";
+      document.getElementById('message_version').style.color="red";
+      document.getElementById('message_version').innerHTML="Bible version must not be blank";
+      isValid =  false;
+  }else{
+    document.getElementById('message_version').style.display="none";
+  }
+
+  if(z==null || z==""){
+      document.getElementById('message_path').style.display="block";
+      document.getElementById('message_path').style.color="red";
+      document.getElementById('message_path').innerHTML="Please fill Folder location plth";
+      isValid =  false;
+  }else{
+    document.getElementById('message_path').style.display="none";
+  }
+  return isValid;
+}
+

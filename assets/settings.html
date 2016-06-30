@@ -84,85 +84,136 @@
 	  </div>
 
 	  <div id="target" class="card">
-	    <form >
-	      <header>
-		<h3>Target Language Settings</h3>
-	      </header>
+	    <form name="target_form" onsubmit="return Validate_Target()">
+        <header>
+          <h3>Target Language Settings</h3>
+        </header>
 
-	      <div class="form-group">
-	  <label>Import Target Text</label>
-		<input id="target-import-path" class="form-control" placeholder="/path/to/import/target/from" readonly>
-		<button id="target-import-btn" class="btn btn-primary">Import Target</button>
-	      </div>
-	      <div class="form-group">
-		<label>Target Language Code</label>
-		<input id="target-lang" class="form-control" placeholder="hi">
-	      </div>
-	      <div class="form-group">
-		<label>Target Version</label>
-		<input id="target-version" class="form-control" placeholder="ulb">
-	      </div>
-	      <div class="form-group">
-		<label>Export Path</label>
-		<input id="export-path" class="form-control" placeholder="/path/to/export/folder" readonly>
-	      </div>
-	      <footer>
-		<button id="save-btn" type="submit" class="btn btn-primary">Save Settings</button>
-	      </footer>
-	    </form>
+        <div class="form-group">
+          <label>Import Target Text</label>
+          <input id="target-import-path" class="form-control" name="t_path"placeholder="/path/to/import/target/from" readonly>
+          <label class="target-label" id="target_text"></label>
+          <button id="target-import-btn" class="btn btn-primary">Import Target</button>
+        </div>
+        <div class="form-group">
+          <label>Target Language Code</label>
+          <input id="target-lang" class="form-control" placeholder="hi" name="t_lang">
+          <label class="target-label" id="target_code"></label>
+        </div>
+        <div class="form-group">
+          <label>Target Version</label>
+          <input id="target-version" class="form-control" placeholder="ulb" name="t_version">
+          <label class="target-label" id="target_version"></label>
+        </div>
+        <div class="form-group">
+          <label>Export Path</label>
+          <input id="export-path" class="form-control" placeholder="/path/to/export/folder" name="t_path"readonly>
+          <label class="target-label" id="target_path"></label>
+        </div>
+        <footer>
+          <button id="save-btn" type="submit" class="btn btn-primary">Save Settings</button>
+        </footer>
+      </form>
 	  </div>
 	  <footer class="toolbar toolbar-footer">
 	  </footer>
 	</div>
 	<script>require('./js/settings.js')</script>
   </body>
-  <script>
-		 function ValidateUsfmSetting(){
-		  var w=document.forms["Form"]["bible-name"].value;
-		  var x=document.forms["Form"]["lang-code"].value;
-		  var y=document.forms["Form"]["bible-version"].value;
-		  var z=document.forms["Form"]["ref-path"].value;
+  <script type="text/javascript">
+  	function ValidateUsfmSetting(){
+  var w=document.forms["Form"]["bible-name"].value;
+  var x=document.forms["Form"]["lang-code"].value;
+  var y=document.forms["Form"]["bible-version"].value;
+  var z=document.forms["Form"]["ref-path"].value;
+  var isValid = true;
+
+  if(w==null || w==""){
+      document.getElementById('message_name').style.display="block";
+      document.getElementById('message_name').style.color="red";
+      document.getElementById('message_name').innerHTML="Bible name must not be blank";
+      isValid =  false;
+
+  }else{
+    document.getElementById('message_name').style.display="none";
+  }
+
+  if(x==null || x==""){
+      document.getElementById('message_lang').style.display="block";
+      document.getElementById('message_lang').style.color="red";
+      document.getElementById('message_lang').innerHTML="Bible language must not be blank";
+      isValid =  false;
+  }
+  else{
+    document.getElementById('message_lang').style.display="none";
+  }
+
+  if(y==null || y==""){
+      document.getElementById('message_version').style.display="block";
+      document.getElementById('message_version').style.color="red";
+      document.getElementById('message_version').innerHTML="Bible version must not be blank";
+      isValid =  false;
+  }else{
+    document.getElementById('message_version').style.display="none";
+  }
+
+  if(z==null || z==""){
+      document.getElementById('message_path').style.display="block";
+      document.getElementById('message_path').style.color="red";
+      document.getElementById('message_path').innerHTML="Please fill Folder location plth";
+      isValid =  false;
+  }else{
+    document.getElementById('message_path').style.display="none";
+  }
+  return isValid;
+}
+
+
+		  function Validate_Target(){
+		  // var w=document.forms["target_form"]["t_path"].value;
+		  var x=document.forms["target_form"]["t_lang"].value;
+		  var y=document.forms["target_form"]["t_version"].value;
+		  var z=document.forms["target_form"]["t_path"].value;
 		  var isValid = true;
 
-		  if(w==null || w==""){
-		      document.getElementById('message_name').style.display="block";
-		      document.getElementById('message_name').style.color="red";
-		      document.getElementById('message_name').innerHTML="Bible name must not be blank";
-		      isValid =  false;
+		  // if(w==null || w==""){
+		  //     document.getElementById('target_text').style.display="block";
+		  //     document.getElementById('target_text').style.color="red";
+		  //     document.getElementById('target_text').innerHTML="Path must not be blank";
+		  //     isValid =  false;
 
-		  }else{
-		    document.getElementById('message_name').style.display="none";
-		  }
+		  // }else{
+		  //   document.getElementById('target_text').style.display="none";
+		  // }
 
 		  if(x==null || x==""){
-		      document.getElementById('message_lang').style.display="block";
-		      document.getElementById('message_lang').style.color="red";
-		      document.getElementById('message_lang').innerHTML="Bible language must not be blank";
+		      document.getElementById('target_code').style.display="block";
+		      document.getElementById('target_code').style.color="red";
+		      document.getElementById('target_code').innerHTML="Language Code must not be blank";
 		      isValid =  false;
 		  }
 		  else{
-		    document.getElementById('message_lang').style.display="none";
+		    document.getElementById('target_code').style.display="none";
 		  }
 
 		  if(y==null || y==""){
-		      document.getElementById('message_version').style.display="block";
-		      document.getElementById('message_version').style.color="red";
-		      document.getElementById('message_version').innerHTML="Bible version must not be blank";
+		      document.getElementById('target_version').style.display="block";
+		      document.getElementById('target_version').style.color="red";
+		      document.getElementById('target_version').innerHTML="Target version must not be blank";
 		      isValid =  false;
 		  }else{
-		    document.getElementById('message_version').style.display="none";
+		    document.getElementById('target_version').style.display="none";
 		  }
 
 		  if(z==null || z==""){
-		      document.getElementById('message_path').style.display="block";
-		      document.getElementById('message_path').style.color="red";
-		      document.getElementById('message_path').innerHTML="Please fill Folder location plth";
+		      document.getElementById('target_path').style.display="block";
+		      document.getElementById('target_path').style.color="red";
+		      document.getElementById('target_path').innerHTML="Please fill Folder location path";
 		      isValid =  false;
 		  }else{
-		    document.getElementById('message_path').style.display="none";
+		    document.getElementById('target_path').style.display="none";
 		  }
 		  return isValid;
 		}
-
-  </script>
+	</script>
 </html>
