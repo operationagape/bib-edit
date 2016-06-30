@@ -154,6 +154,7 @@ document.getElementById('ref-path').addEventListener('click', function (e) {
 			  });
 });
 
+<<<<<<< HEAD
   // function validateForm()
   //   {
   //   var a=document.forms["Form"]["ref-name"].value;
@@ -167,3 +168,5 @@ document.getElementById('ref-path').addEventListener('click', function (e) {
   //     return false;
   //     }
   //   }
+=======
+>>>>>>> settings_ui_validate

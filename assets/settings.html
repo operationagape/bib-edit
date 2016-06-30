@@ -53,26 +53,29 @@
 	  </div>
 
 	  <div id="reference" class="card">
-	  <form name="Form" >
+	  <form name="Form" onsubmit="return ValidateUsfmSetting()">
 	    <header>
 	      <h3>Reference USFM settings</h3>
 	    </header>
 	    <div class="form-group">
 	      <label>Reference Bible Name</label>
-	      <input id="ref-name" class="form-control" placeholder="Hindi - UDB (BSI)" required autofocus>
-	      <span id="span_id"></span>
+	      <input id="ref-name" class="form-control" placeholder="Hindi - UDB (BSI)" name="bible-name">
+	      <label class="message" id="message_name" ></label>
 	    </div>
 	    <div class="form-group">
 	      <label>Reference Bible Language Code</label>
-	      <input id="ref-lang-code" class="form-control" placeholder="hi">
+	      <input id="ref-lang-code" class="form-control" placeholder="hi" name="lang-code">
+	      <label class="message" id="message_lang" ></label>
 	    </div>
 	    <div class="form-group">
 	      <label>Reference Bible Version</label>
-	      <input id="ref-version" class="form-control" placeholder="udb">
+	      <input id="ref-version" class="form-control" placeholder="udb" name="bible-version">
+	      <label class="message" id="message_version" ></label>
 	    </div>
 	    <div class="form-group">
 	      <label>Reference Bible Folder Location</label>
-	      <input id="ref-path" class="form-control" placeholder="/path/to/reference-bible/folder" readonly>
+	      <input id="ref-path" class="form-control" placeholder="/path/to/reference-bible/folder" name="ref-path" readonly>
+	      <label class="message" id="message_path" ></label>
 	    </div>
 	    <footer>
       	<button id="ref-import-btn" type="submit" class="btn btn-primary">Import</button>
@@ -112,64 +115,54 @@
 	  </footer>
 	</div>
 	<script>require('./js/settings.js')</script>
-	<script type="text/javascript">
-		var input_target = (document.getElementsById && document.createElement);
-
-		window.onload = function () {
-			console.log('its running!');
-			document.forms[0].onsubmit = function () {
-				return validate()
-			}
-		}
-
-		function validate() {
-			console.log("validate");
-		validForm = true;
-		firstError = null;
-		errorstring = '';
-		var x = document.forms[0].elements;
-		for (var i=0;i<x.length;i++) {
-			if (!x[i].value)
-				writeError(x[i],'This field is required');
-		}
-		if (!input_target)
-			alert(errorstring);
-		if (firstError)
-			firstError.focus();
-		if (validForm)
-			alert('All data is valid!');
-			// document.getElementsById("span_id").innerHTML = "helloooooo"
-		return false;
-	}
-
-	function writeError(obj,message) {
-	validForm = false;
-	if (obj.hasError) return;
-	if (input_target) {
-		obj.className += ' error';
-		obj.onchange = removeError;
-		var sp = document.createElement('span');
-		sp.className = 'error';
-		sp.appendChild(document.createTextNode(message));
-		obj.parentNode.appendChild(sp);
-		obj.hasError = sp;
-	}
-	else {
-		errorstring += obj.name + ': ' + message + '\n';
-		obj.hasError = true;
-	}
-	if (!firstError)
-		firstError = obj;
-	}
-
-	function removeError()
-	{
-		this.className = this.className.substring(0,this.className.lastIndexOf(' '));
-		this.parentNode.removeChild(this.hasError);
-		this.hasError = null;
-		this.onchange = null;
-	}
-
-</script>
   </body>
+  <script>
+		 function ValidateUsfmSetting(){
+		  var w=document.forms["Form"]["bible-name"].value;
+		  var x=document.forms["Form"]["lang-code"].value;
+		  var y=document.forms["Form"]["bible-version"].value;
+		  var z=document.forms["Form"]["ref-path"].value;
+		  var isValid = true;
+
+		  if(w==null || w==""){
+		      document.getElementById('message_name').style.display="block";
+		      document.getElementById('message_name').style.color="red";
+		      document.getElementById('message_name').innerHTML="Bible name must not be blank";
+		      isValid =  false;
+
+		  }else{
+		    document.getElementById('message_name').style.display="none";
+		  }
+
+		  if(x==null || x==""){
+		      document.getElementById('message_lang').style.display="block";
+		      document.getElementById('message_lang').style.color="red";
+		      document.getElementById('message_lang').innerHTML="Bible language must not be blank";
+		      isValid =  false;
+		  }
+		  else{
+		    document.getElementById('message_lang').style.display="none";
+		  }
+
+		  if(y==null || y==""){
+		      document.getElementById('message_version').style.display="block";
+		      document.getElementById('message_version').style.color="red";
+		      document.getElementById('message_version').innerHTML="Bible version must not be blank";
+		      isValid =  false;
+		  }else{
+		    document.getElementById('message_version').style.display="none";
+		  }
+
+		  if(z==null || z==""){
+		      document.getElementById('message_path').style.display="block";
+		      document.getElementById('message_path').style.color="red";
+		      document.getElementById('message_path').innerHTML="Please fill Folder location plth";
+		      isValid =  false;
+		  }else{
+		    document.getElementById('message_path').style.display="none";
+		  }
+		  return isValid;
+		}
+
+  </script>
 </html>
