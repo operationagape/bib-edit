@@ -22,6 +22,9 @@ Menu.setApplicationMenu(menu);
 
 var constants = require('../util/constants.js');
 
+var ot_book = constants.booksList.slice(0,39);
+var nt_book = constants.booksList.slice(39,66);
+
 function createBooksList(booksLimit) {
     var i;
     for (i=1; i<=booksLimit; i++) {

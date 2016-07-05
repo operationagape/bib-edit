@@ -31,15 +31,16 @@
               <header>
                 <h3>Select Book</h3>
               </header>
-              <div class="radio">
+              <form id="mainForm" name="mainForm">
                 <label>
-                  <input type='radio'  name="radios_book" value="OT" id="OT" checked>
+                  <input type='radio' name="radios_book" value="OT">
                   <span class="checkable">OT</span>
                 </label>
                 <label>
-                  <input type="radio" name="radios_book" value="NT" id="NT" >
-                  <span class="checkable">NT</span></label>
-              </div>
+                  <input type="radio" name="radios_book" value="NT" >
+                  <span class="checkable">NT</span>
+                </label>
+              </form>
             </div>
           </div>
       	  <div id="chapters-pane" class="pane">
@@ -51,5 +52,12 @@
       </div>
     </div>
     <script>require('./js/index.js')</script>
+    <script>
+      document.mainForm.onclick = function(){
+      var radVal = document.mainForm.radios_book.value;
+       leftpane.innerHTML = 'You selected: '+radVal;
+      // console.log("you selected" + radVal );
+  }
+    </script>
   </body>
 </html>
