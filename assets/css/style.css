@@ -15,7 +15,13 @@
     width:200px;
     float:left;
     overflow-y: auto;
+    position: relative;
     /*max-height: 100%;*/
+
+}
+#chapters-pane{
+    position:relative;
+
 }
 #reference {
     background-color:#D0D0D0;

@@ -122,98 +122,98 @@
   </body>
   <script type="text/javascript">
   	function ValidateUsfmSetting(){
-  var w=document.forms["Form"]["bible-name"].value;
-  var x=document.forms["Form"]["lang-code"].value;
-  var y=document.forms["Form"]["bible-version"].value;
-  var z=document.forms["Form"]["ref-path"].value;
-  var isValid = true;
+	  var w=document.forms["Form"]["bible-name"].value;
+	  var x=document.forms["Form"]["lang-code"].value;
+	  var y=document.forms["Form"]["bible-version"].value;
+	  var z=document.forms["Form"]["ref-path"].value;
+	  var isValid = true;
 
-  if(w==null || w==""){
-      document.getElementById('message_name').style.display="block";
-      document.getElementById('message_name').style.color="red";
-      document.getElementById('message_name').innerHTML="Bible name must not be blank";
-      isValid =  false;
+	  if(w==null || w==""){
+	      document.getElementById('message_name').style.display="block";
+	      document.getElementById('message_name').style.color="red";
+	      document.getElementById('message_name').innerHTML="Bible name must not be blank";
+	      isValid =  false;
 
-  }else{
-    document.getElementById('message_name').style.display="none";
-  }
+	  }else{
+	    document.getElementById('message_name').style.display="none";
+	  }
 
-  if(x==null || x==""){
-      document.getElementById('message_lang').style.display="block";
-      document.getElementById('message_lang').style.color="red";
-      document.getElementById('message_lang').innerHTML="Bible language must not be blank";
-      isValid =  false;
-  }
-  else{
-    document.getElementById('message_lang').style.display="none";
-  }
+	  if(x==null || x==""){
+	      document.getElementById('message_lang').style.display="block";
+	      document.getElementById('message_lang').style.color="red";
+	      document.getElementById('message_lang').innerHTML="Bible language must not be blank";
+	      isValid =  false;
+	  }
+	  else{
+	    document.getElementById('message_lang').style.display="none";
+	  }
 
-  if(y==null || y==""){
-      document.getElementById('message_version').style.display="block";
-      document.getElementById('message_version').style.color="red";
-      document.getElementById('message_version').innerHTML="Bible version must not be blank";
-      isValid =  false;
-  }else{
-    document.getElementById('message_version').style.display="none";
-  }
+	  if(y==null || y==""){
+	      document.getElementById('message_version').style.display="block";
+	      document.getElementById('message_version').style.color="red";
+	      document.getElementById('message_version').innerHTML="Bible version must not be blank";
+	      isValid =  false;
+	  }else{
+	    document.getElementById('message_version').style.display="none";
+	  }
 
-  if(z==null || z==""){
-      document.getElementById('message_path').style.display="block";
-      document.getElementById('message_path').style.color="red";
-      document.getElementById('message_path').innerHTML="Please fill Folder location plth";
-      isValid =  false;
-  }else{
-    document.getElementById('message_path').style.display="none";
-  }
-  return isValid;
-}
+	  if(z==null || z==""){
+	      document.getElementById('message_path').style.display="block";
+	      document.getElementById('message_path').style.color="red";
+	      document.getElementById('message_path').innerHTML="Please fill Folder location plth";
+	      isValid =  false;
+	  }else{
+	    document.getElementById('message_path').style.display="none";
+	  }
+	  return isValid;
+	}
 
 
-		  function Validate_Target(){
-		  // var w=document.forms["target_form"]["t_path"].value;
-		  var x=document.forms["target_form"]["t_lang"].value;
-		  var y=document.forms["target_form"]["t_version"].value;
-		  var z=document.forms["target_form"]["t_path"].value;
-		  var isValid = true;
+  	function Validate_Target(){
+	  // var w=document.forms["target_form"]["t_path"].value;
+	  var x=document.forms["target_form"]["t_lang"].value;
+	  var y=document.forms["target_form"]["t_version"].value;
+	  var z=document.forms["target_form"]["t_path"].value;
+	  var isValid = true;
 
-		  // if(w==null || w==""){
-		  //     document.getElementById('target_text').style.display="block";
-		  //     document.getElementById('target_text').style.color="red";
-		  //     document.getElementById('target_text').innerHTML="Path must not be blank";
-		  //     isValid =  false;
+	  // if(w==null || w==""){
+	  //     document.getElementById('target_text').style.display="block";
+	  //     document.getElementById('target_text').style.color="red";
+	  //     document.getElementById('target_text').innerHTML="Path must not be blank";
+	  //     isValid =  false;
 
-		  // }else{
-		  //   document.getElementById('target_text').style.display="none";
-		  // }
+	  // }else{
+	  //   document.getElementById('target_text').style.display="none";
+	  // }
 
-		  if(x==null || x==""){
-		      document.getElementById('target_code').style.display="block";
-		      document.getElementById('target_code').style.color="red";
-		      document.getElementById('target_code').innerHTML="Language Code must not be blank";
-		      isValid =  false;
-		  }
-		  else{
-		    document.getElementById('target_code').style.display="none";
-		  }
+	  if(x==null || x==""){
+	      document.getElementById('target_code').style.display="block";
+	      document.getElementById('target_code').style.color="red";
+	      document.getElementById('target_code').innerHTML="Language Code must not be blank";
+	      isValid =  false;
+	  }
+	  else{
+	    document.getElementById('target_code').style.display="none";
+	  }
 
-		  if(y==null || y==""){
-		      document.getElementById('target_version').style.display="block";
-		      document.getElementById('target_version').style.color="red";
-		      document.getElementById('target_version').innerHTML="Target version must not be blank";
-		      isValid =  false;
-		  }else{
-		    document.getElementById('target_version').style.display="none";
-		  }
+	  if(y==null || y==""){
+	      document.getElementById('target_version').style.display="block";
+	      document.getElementById('target_version').style.color="red";
+	      document.getElementById('target_version').innerHTML="Target version must not be blank";
+	      isValid =  false;
+	  }else{
+	    document.getElementById('target_version').style.display="none";
+	  }
 
-		  if(z==null || z==""){
-		      document.getElementById('target_path').style.display="block";
-		      document.getElementById('target_path').style.color="red";
-		      document.getElementById('target_path').innerHTML="Please fill Folder location path";
-		      isValid =  false;
-		  }else{
-		    document.getElementById('target_path').style.display="none";
-		  }
-		  return isValid;
-		}
-	</script>
+	  if(z==null || z==""){
+	      document.getElementById('target_path').style.display="block";
+	      document.getElementById('target_path').style.color="red";
+	      document.getElementById('target_path').innerHTML="Please fill Folder location path";
+	      isValid =  false;
+	  }else{
+	    document.getElementById('target_path').style.display="none";
+	  }
+	  return isValid;
+	}
+  </script>
 </html>

@@ -31,9 +31,9 @@
               <header>
                 <h3>Select Book</h3>
               </header>
-              <div class="radio">
+              <div class="radio" name="mainForm" id="mainForm">
                 <label>
-                  <input type='radio'  name="radios_book" value="OT" id="OT" checked>
+                  <input type='radio' name="radios_book" value="OT" id="OT" >
                   <span class="checkable">OT</span>
                 </label>
                 <label>
@@ -52,4 +52,12 @@
     </div>
     <script>require('./js/index.js')</script>
   </body>
+  <script>
+document.getElementById("mainForm").onclick = function(){
+    var radVal = document.getElementById("mainForm").radios_book.value;
+    console.log(radVal)
+    // document.getElementById("result").value = 'You selected: '+radVal;
+}
+</script>
+  
 </html>
