@@ -15,7 +15,7 @@
     width:200px;
     float:left;
     overflow-y: auto;
-    position: relative;
+    position: fixed;
     /*max-height: 100%;*/
 
 }
