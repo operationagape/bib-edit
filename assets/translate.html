@@ -5,12 +5,12 @@
     <meta charset="utf-8" />
     <!-- Stylesheets -->
     <!-- <link rel="stylesheet" href="css/photon.min.css"> -->
-    <link rel="stylesheet" href="css/picnic.min.css">
+    <!-- <link rel="stylesheet" href="css/picnic.min.css"> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
   </head>
   <body>
-    <div class="window">
+    <!-- <div class="window"> -->
 
       <!-- .toolbar-header sits at the top of your app -->
       <header class="toolbar toolbar-header" id="header">
@@ -30,11 +30,18 @@
 	    <select id="refs-select"></select>
 	    <div id="ref">
 	    </div>
-	  </div>
+	  <!-- </div> -->
       	  <div class="pane" id="target_pane">Verses
             <button id="save-btn" class="btn btn-primary pull-right">Save</button>
       	    <div id="input-verses-group" class="form-group"></div>
       	  </div>
+    <form id="test" name="test">
+                <label><input type="radio" name="R1" value="o_books"> A</label>
+                <label><input type="radio" name="R1" value="n_books" checked> B</label>
+                <!-- <input type="text" name="name" value="" id="name" /> -->
+                <div id="demo">
+                </div>
+              </form>
       	</div>
        <!--  <footer class="toolbar toolbar-footer">
       </footer> -->
@@ -43,4 +50,34 @@
     </div>
     <script>require("./js/translate.js")</script>
   </body>
+  <script>
+
+  var arr = ["Genesis", "Exodus", "Leviticus", "Numbers"];
+
+var ot_books = arr.slice(0,2);
+var nt_books = arr.slice(2,4);
+console.log(ot_books);
+console.log(nt_books)
+
+document.test.onclick = function(){
+  if(document.test.R1.value == "o_books"){
+    createBooksList(ot_books.length, ot_books); // find how to pass array in function parameter
+  }else if(document.test.R1.value == "n_books"){
+     createBooksList(nt_books.length, nt_books);
+  }
+  
+
+  function createBooksList(booksLimit, bookName) {
+    for(var i=0;i<=booksLimit;i++){
+       b = document.createElement('button');
+       b.className = "button";
+       b.id = "id" + i;
+
+       t = document.createTextNode(bookName[i-1]);
+       b.appendChild(t);
+       document.getElementById('demo').appendChild(b);
+    } 
+  }
+}
+</script>
 </html>
