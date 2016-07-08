@@ -12,15 +12,16 @@
 #leftpane {
     background-color:#E0E0E0;
     padding-left: 5px;
-    width:200px;
+    width: 200px;
     float:left;
     overflow-y: auto;
-    position: fixed;
+    /*position: fixed;*/
     /*max-height: 100%;*/
 
 }
 #chapters-pane{
-    position:relative;
+    
+    width: 100%;
 
 }
 #reference {
