@@ -30,11 +30,22 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <div class="btn-group" role="group" aria-label="...">
-            <button class="btn btn-default" type="button">ALL</button>
-            <button class="btn btn-default" type="button">OT</button>
-            <button class="btn btn-default" type="button">NT</button>
-          </div>
+          <!-- <div class="btn-group" role="group" aria-label="...">
+            <button class="btn btn-default" name="R1" type="button">ALL</button>
+            <button class="btn btn-default" name="R1" type="button">OT</button>
+            <button class="btn btn-default" name="R1" type="button">NT</button>
+          </div> -->
+          <form role="form" name="leftPannelBox">
+            <label class="radio-inline">
+              <input type="radio" name="R1" value="ALL" checked>All
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="R1" value="OT">OT
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="R1" value="NT">NT
+            </label>
+          </form>
           <ul id="books-pane" class="nav nav-sidebar">
           </ul>
         </div>
