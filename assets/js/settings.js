@@ -158,15 +158,46 @@ document.getElementById('ref-path').addEventListener('click', function (e) {
 			  });
 });
 
-// function validateForm()
-//     {
-//     var a=document.forms["Form"]["target_lang"].value;
-//     var b=document.forms["Form"]["target_version"].value;
-//     var c=document.forms["Form"]["export"].value;
+// field validation check function for reference settings
 
-//     if (a==null || a=="",b==null || b=="",c==null || c=="")
-//       {
-//       alert("Please Fill All Required Field");
-//       return false;
-//       }
-//     }
+function Validate_Ref(){
+    var w=document.forms["ref_form"]["ref_name"].value;
+    var x=document.forms["ref_form"]["ref_lang_code"].value;
+    var y=document.forms["ref_form"]["ref_version"].value;
+    var z=document.forms["ref_form"]["ref_path"].value;
+    var isValid = true;
+    if(w==null || w==""){
+        document.getElementById('ref_label_name').style.display="block";
+        document.getElementById('ref_label_name').style.color="red";
+        document.getElementById('ref_label_name').innerHTML="Bible name must not be blank";
+        isValid =  false;
+    }else{
+      document.getElementById('ref_label_name').style.display="none";
+    }
+    if(x==null || x==""){
+        document.getElementById('ref_label_code').style.display="block";
+        document.getElementById('ref_label_code').style.color="red";
+        document.getElementById('ref_label_code').innerHTML="Bible language must not be blank";
+        isValid =  false;
+    }
+    else{
+      document.getElementById('ref_label_code').style.display="none";
+    }
+    if(y==null || y==""){
+        document.getElementById('ref_label_version').style.display="block";
+        document.getElementById('ref_label_version').style.color="red";
+        document.getElementById('ref_label_version').innerHTML="Bible version must not be blank";
+        isValid =  false;
+    }else{
+      document.getElementById('ref_label_version').style.display="none";
+    }
+    if(z==null || z==""){
+        document.getElementById('ref_label_path').style.display="block";
+        document.getElementById('ref_label_path').style.color="red";
+        document.getElementById('ref_label_path').innerHTML="Please fill Folder location path";
+        isValid =  false;
+    }else{
+      document.getElementById('ref_label_path').style.display="none";
+    }
+    return isValid;
+  }

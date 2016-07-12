@@ -34,49 +34,60 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <div class="row">
-            <form></form>
-            <div class="col-md-6">
-              <h3>Reference USFM settings</h3>
-              <div class="form-group">
-                <label>Reference Bible Name</label>
-                <input class="form-control" id="ref-name" placeholder="Hindi - UDB (BSI)">
+            <div class="row">
+              <form name="ref_form" onsubmit="return Validate_Ref()">
+              <div class="col-md-6">
+                <h3>Reference USFM settings</h3>
+                <div class="form-group">
+                  <label>Reference Bible Name</label>
+                  <input class="form-control" id="ref-name" name="ref_name" placeholder="Hindi - UDB (BSI)">
+                  <label class="ref-label" id="ref_label_name" ></label>
+                </div>
+                <div class="form-group">
+                  <label>Reference Bible Language Code</label>
+                  <input class="form-control" id="ref-lang-code" name="ref_lang_code" placeholder="hi">
+                  <label class="ref-label" id="ref_label_code" ></label>
+                </div>
+                <div class="form-group">
+                  <label>Reference Bible Version</label>
+                  <input class="form-control" id="ref-version" name="ref_version" placeholder="udb">
+                  <label class="ref-label" id="ref_label_version" ></label>
+                </div>
+                <div class="form-group">
+                  <label>Reference Bible Folder Location</label>
+                  <input class="form-control" id="ref-path" name="ref_path" placeholder="/path/to/reference-bible/folder" readonly="">
+                  <label class="ref-label" id="ref_label_path" ></label>
+                </div>
+                <button class="btn btn-success" type="submit" id="ref-import-btn">Import</button>
               </div>
-              <div class="form-group">
-                <label>Reference Bible Language Code</label>
-                <input class="form-control" id="ref-lang-code" placeholder="hi">
+            </form>
+            <form name="target_form" onsubmit="return Validate_Target()">
+              <div class="col-md-6">
+                <h3> Target Language Settings</h3>
+                <div class="form-group">
+                  <label>Target Language Code</label>
+                  <input class="form-control" id="target-lang" name="target_lang" placeholder="hi">
+                  <label class="target-label" id="target_label_code"></label>
+                </div>
+                <div class="form-group">
+                  <label>Target Version</label>
+                  <input class="form-control" id="target-version" name="target_version" placeholder="ulb">
+                  <label class="target-label" id="target_label_version"></label>
+                </div>
+                <div class="form-group">
+                  <label>Export Path</label>
+                  <input class="form-control" id="export-path" name="target_path" placeholder="/path/to/export/folder" readonly="">
+                  <label class="target-label" id="target_label_path"></label>
+                </div>
+                <button class="btn btn-success" type="submit" id="save-btn">Save Settings</button>
+  	            <hr />
+        	      <div class="form-group">
+        		      <input id="target-import-path" class="form-control" name="target_import" placeholder="/path/to/import/target/from" readonly>
+                  <label class="target-label" id="target_import"></label>
+        	      </div>
+      	        <button id="target-import-btn" class="btn btn-success">Import Target</button>
               </div>
-              <div class="form-group">
-                <label>Reference Bible Version</label>
-                <input class="form-control" id="ref-version" placeholder="udb">
-              </div>
-              <div class="form-group">
-                <label>Reference Bible Folder Location</label>
-                <input class="form-control" id="ref-path" placeholder="/path/to/reference-bible/folder" readonly="">
-              </div>
-              <button class="btn btn-success" id="ref-import-btn">Import</button>
-            </div>
-            <div class="col-md-6">
-              <h3> Target Language Settings</h3>
-              <div class="form-group">
-                <label>Target Language Code</label>
-                <input class="form-control" id="target-lang" placeholder="hi">
-              </div>
-              <div class="form-group">
-                <label>Target Version</label>
-                <input class="form-control" id="target-version" placeholder="ulb">
-              </div>
-              <div class="form-group">
-                <label>Export Path</label>
-                <input class="form-control" id="export-path" placeholder="/path/to/export/folder" readonly="">
-              </div>
-              <button class="btn btn-success" id="save-btn">Save Settings</button>
-	      <hr />
-	      <div class="form-group">
-		<input id="target-import-path" class="form-control" placeholder="/path/to/import/target/from" readonly>
-	      </div>
-	      <button id="target-import-btn" class="btn btn-success">Import Target</button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -86,5 +97,48 @@
     <script src="../js/lib/bootstrap.min.js"></script>
     <script src="../js/settings.js"></script>
     <script>if (window.module) module = window.module;</script>
+    <script type="text/javascript">
+    function Validate_Target(){
+    // var w=document.forms["target_form"]["t_path"].value;
+    var x=document.forms["target_form"]["target_lang"].value;
+    var y=document.forms["target_form"]["target_version"].value;
+    var z=document.forms["target_form"]["target_path"].value;
+    var isValid = true;
+    // if(w==null || w==""){
+    //     document.getElementById('target_text').style.display="block";
+    //     document.getElementById('target_text').style.color="red";
+    //     document.getElementById('target_text').innerHTML="Path must not be blank";
+    //     isValid =  false;
+    // }else{
+    //   document.getElementById('target_text').style.display="none";
+    // }
+    if(x==null || x==""){
+        document.getElementById('target_label_code').style.display="block";
+        document.getElementById('target_label_code').style.color="red";
+        document.getElementById('target_label_code').innerHTML="Language Code must not be blank";
+        isValid =  false;
+    }
+    else{
+      document.getElementById('target_label_code').style.display="none";
+    }label_
+    if(y==null || y==""){
+        document.getElementById('target_label_version').style.display="block";
+        document.getElementById('target_label_version').style.color="red";
+        document.getElementById('target_label_version').innerHTML="Target version must not be blank";
+        isValid =  false;
+    }else{
+      document.getElementById('target_label_version').style.display="none";
+    }
+    if(z==null || z==""){
+        document.getElementById('target_label_path').style.display="block";
+        document.getElementById('target_label_path').style.color="red";
+        document.getElementById('target_label_path').innerHTML="Please fill Folder location path";
+        isValid =  false;
+    }else{
+      document.getElementById('target_label_path').style.display="none";
+    }
+    return isValid;
+  }
+    </script>
   </body>
 </html>
