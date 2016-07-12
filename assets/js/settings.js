@@ -29,8 +29,9 @@ document.getElementById('export-path').addEventListener('click', function (e) {
 // });
 
 document.getElementById('save-btn').addEventListener('click', function (e) {
-    db = new PouchDB('database');
+    db = new PouchDB('exportsetting');
     db.get('targetBible').then(function (doc) {
+    console.log(doc);
   	db.put({
 	    _id: 'targetBible',
 	    _rev: doc._rev,

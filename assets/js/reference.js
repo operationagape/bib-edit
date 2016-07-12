@@ -100,21 +100,36 @@ for(i=1; i<=books.length; i++) {
 
 //validation for export
 document.getElementById('export-usfm').addEventListener('click', function (e) {
-    db = new PouchDB('database');
-    db.get('targetBible').then(function (err, doc) {
-	if (err){
-		alertModal("Export Alert!!", "Please configure export setting before import!!");
-		return;
-	    	
-	} else{
+	
+db = new PouchDB('exportsetting');
+// Deleting database
+// db.destroy(function (err, response) {
+//    if (err) {
+//       return console.log(err);
+//    } else {
+//    	console.log("deleting");
+//    }
+// });
+
+//Reading the database object    
+    db.get('targetBible').then(function (doc) {
+    	if(doc){
+			console.log(doc);	
+			alertModal("Porgress task", "This task is in progrss");
+	   		return;
+		} else{
 	    	//****** export logic *****************/
-	    	alertModal("Porgress task", "This task is in progrss");
-	    	return
+	    	alertModal("Export Alert!!", "Please configure export setting!!");
+			return;
+	    		
 	    }
-    })
+    }).catch(function (err) {
+  		alertModal("Something went wrong!!", "Contact support team!!");
+		return;
+  	});
 });
 
-// validation end
+
 
 /*document.getElementById("export-btn").addEventListener("click", function (e) {
     session.defaultSession.cookies.get({url: 'http://book.autographa.com'}, (error, cookie) => {
