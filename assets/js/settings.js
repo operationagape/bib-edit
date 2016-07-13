@@ -158,7 +158,7 @@ document.getElementById('ref-path').addEventListener('click', function (e) {
 			  });
 });
 
-// field validation check function for reference settings
+// field validation check for reference settings
 
 function Validate_Ref(){
     var w=document.forms["ref_form"]["ref_name"].value;
@@ -201,3 +201,39 @@ function Validate_Ref(){
     }
     return isValid;
   }
+
+  // field validation check for target language settings
+
+  function Validate_Target(){
+        var x=document.forms["target_form"]["target_lang"].value;
+        var y=document.forms["target_form"]["target_version"].value;
+        var z=document.forms["target_form"]["target_path"].value;
+        var isValid = true;
+       
+        if(x==null || x==""){
+            document.getElementById('target_label_lang').style.display="block";
+            document.getElementById('target_label_lang').style.color="red";
+            document.getElementById('target_label_lang').innerHTML="Language Code must not be blank";
+            isValid =  false;
+        }
+        else{
+          document.getElementById('target_label_lang').style.display="none";
+        }
+        if(y==null || y==""){
+            document.getElementById('target_label_version').style.display="block";
+            document.getElementById('target_label_version').style.color="red";
+            document.getElementById('target_label_version').innerHTML="Target version must not be blank";
+            isValid =  false;
+        }else{
+          document.getElementById('target_label_version').style.display="none";
+        }
+        if(z==null || z==""){
+            document.getElementById('target_label_path').style.display="block";
+            document.getElementById('target_label_path').style.color="red";
+            document.getElementById('target_label_path').innerHTML="Please fill Folder location path";
+            isValid =  false;
+        }else{
+          document.getElementById('target_label_path').style.display="none";
+        }
+        return isValid;
+      }
