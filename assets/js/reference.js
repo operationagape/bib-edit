@@ -82,6 +82,7 @@ function onBookSelect(bookId) {
 
 createBooksList(66);
 
+
 // Check for existing book in session.
 session.defaultSession.cookies.get({url: 'http://book.autographa.com'}, (error, cookie) => {
     var onLoadBookId = 'b1';

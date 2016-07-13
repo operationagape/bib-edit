@@ -32,7 +32,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <div class="btn-group" role="group" aria-label="...">
-            <button class="btn btn-default" type="button">ALL</button>
+            <button class="btn btn-default" type="button" onclick="createBooksList(66)">ALL</button>
             <button class="btn btn-default" type="button">OT</button>
             <button class="btn btn-default" type="button">NT</button>
           </div>
@@ -61,5 +61,14 @@
     <script src="../js/lib/main.js"></script>
     <script src="../js/reference.js"></script>
     <script>if (window.module) module = window.module;</script>
+    <script>
+  function myFunction() {
+    var list = document.getElementById("books-pane");
+    while(list.firstChild){
+      console.log("its working!!");
+      list.removeChild(list.childNodes[0]);
+    }
+  }
+</script>
   </body>
 </html>
