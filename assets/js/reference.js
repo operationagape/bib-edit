@@ -129,13 +129,13 @@ function createBooksList(booksLimit, bookName) {
 		b.id = "b"+i;
 		t = document.createTextNode(bookName[i-1]);
 		b.appendChild(t);
-		document.getElementById('bookButton').appendChild(b);
+		document.getElementById('books-pane').appendChild(b);
 	}
 }
 
 // createBooksList(66);
 document.getElementById("o_books").onclick = function(){
-		list = document.getElementById('bookButton');
+		list = document.getElementById('books-pane');
 		while(list.firstChild){
 			list.removeChild(list.childNodes[0]);
 		}
@@ -143,7 +143,7 @@ document.getElementById("o_books").onclick = function(){
 		bookLink();
 	}
 document.getElementById("n_books").onclick = function(){
-		list = document.getElementById('bookButton');
+		list = document.getElementById('books-pane');
 		while(list.firstChild){
 			list.removeChild(list.childNodes[0]);
 		}
