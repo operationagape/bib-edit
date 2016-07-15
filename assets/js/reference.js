@@ -37,6 +37,7 @@ var constants = require('../util/constants.js');
 // }
 
 function createChaptersList(chaptersLimit) {
+	console.log(chaptersLimit);
     var i;
     for (i=1; i<=chaptersLimit; i++) {
 	var li = document.createElement('li'),
@@ -116,7 +117,7 @@ $('a[type="export"]').click(function () {
 });
 
 // OT & NT list function
-
+var all_books = constants.booksList;
 var ot_books = constants.booksList.slice(0,39);
 var nt_books = constants.booksList.slice(39,66);
 
@@ -125,7 +126,7 @@ function createBooksList(booksLimit, bookName) {
 	var i;
 	for (i=1; i<=booksLimit; i++) {
 		b = document.createElement('button');
-		b.className = "stack pseudo button";
+		b.className = "btn btn-default";
 		b.id = "b"+i;
 		t = document.createTextNode(bookName[i-1]);
 		b.appendChild(t);
@@ -134,6 +135,14 @@ function createBooksList(booksLimit, bookName) {
 }
 
 // createBooksList(66);
+document.getElementById("all_books").onclick = function(){
+		list = document.getElementById('books-pane');
+		while(list.firstChild){
+			list.removeChild(list.childNodes[0]);
+		}
+		createBooksList(all_books.length, all_books);
+		bookLink();
+	}
 document.getElementById("o_books").onclick = function(){
 		list = document.getElementById('books-pane');
 		while(list.firstChild){
